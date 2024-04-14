@@ -64,7 +64,7 @@ router.put('/onu/:id', async (req, res)=>{
 app.use((req, res, next) => {
     //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
     // res.header('Access-Control-Allow-Origin', 'https://jnoriegav93.github.io/js_coder/googlemap/');
-    res.header('Access-Control-Allow-Origin', '*);
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
