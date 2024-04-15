@@ -1,36 +1,10 @@
 const express = require('express');
 const dbconnect = require('./config');
-const ModelUser = require('./model/userModel');
+const ModelMufa = require('./model/mufaModel');
 const ModelOnu  = require('./model/onuModel');
 const app = express();
 const router = express.Router();
 
-//Insert
-router.post('/users', async (req, res)=>{
-    const body = req.body
-    const respuesta = await ModelUser.create(body)
-    res.send(respuesta)
-})
-
-//Select ALL
-router.get('/users', async (req, res)=>{
-    const respuesta = await ModelUser.find({})
-    res.send(respuesta)
-})
-
-//Select WHERE
-router.get('/users/:id', async (req, res)=>{
-    const id = req.params.id;
-    const respuesta = await ModelUser.findById(id)
-    res.send(respuesta)
-})
-//Update WHERE
-router.put('/users/:id', async (req, res)=>{
-    const id = req.params.id;
-    const body = req.body;
-    const respuesta = await ModelUser.findOneAndUpdate({_id: id}, body)
-    res.send(respuesta)
-})
 
 //Select ALL onus
 router.get('/onu/', async (req, res)=>{
@@ -60,6 +34,34 @@ router.put('/onu/:id', async (req, res)=>{
 })
 
 
+//Insert
+router.post('/mufa', async (req, res)=>{
+    const body = req.body
+    const respuesta = await ModelMufa.create(body)
+    res.send(respuesta)
+})
+
+//Select ALL
+router.get('/mufa', async (req, res)=>{
+    const respuesta = await ModelMufa.find({})
+    res.send(respuesta)
+})
+
+//Select WHERE
+router.get('/mufa/:id', async (req, res)=>{
+    const id = req.params.id;
+    const respuesta = await ModelMufa.findById(id)
+    res.send(respuesta)
+})
+//Update WHERE
+router.put('/mufa/:id', async (req, res)=>{
+    const id = req.params.id;
+    const body = req.body;
+    const respuesta = await ModelMufa.findOneAndUpdate({_id: id}, body)
+    res.send(respuesta)
+})
+
+
 
 //
 app.use((req, res, next) => {
@@ -74,19 +76,3 @@ app.listen(3001, () =>{
     console.log(`El servidor está en el puerto 3001`);
 })
 dbconnect();
-
-//https://www.youtube.com/watch?v=igcQhdMiECc&ab_channel=InfoCode19
-/*
-{
-    "onu_id"             : 1,
-    "hilo_id"            :21,
-    "splitter_id"        :31,
-    "geom"               :"{lat: -11.24142142, lon: -77.124521421}",
-    "cliente_nombre"     :"cliente",
-    "cliente_direccion"  :"Direccion",
-    "velocidad_mb"       :200,
-    "inicio_contrato"    :"02/05/2024",
-    "monto_pago"         :149.90,
-    "icono"              :"default"
-}
-*/
