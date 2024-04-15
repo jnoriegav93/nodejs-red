@@ -34,14 +34,15 @@ router.put('/users/:id', async (req, res)=>{
 
 //Select ALL onus
 router.get('/onu/', async (req, res)=>{
-    const respuesta = await ModelOnu.find({})
+    const respuesta = await ModelOnu.find({ estado: 1 })
     res.send(respuesta)
 })
 
 //Select WHERE
 router.get('/onu/:id', async (req, res)=>{
     const id = req.params.id;
-    const respuesta = await ModelOnu.findById(id)
+    // const respuesta = await ModelOnu.findById(id);
+    const respuesta = await ModelOnu.findOne({ _id: id, estado: 1 });
     res.send(respuesta)
 })
 //Insert
@@ -62,9 +63,7 @@ router.put('/onu/:id', async (req, res)=>{
 
 //
 app.use((req, res, next) => {
-    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
-    // res.header('Access-Control-Allow-Origin', 'https://jnoriegav93.github.io/js_coder/googlemap/');
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
