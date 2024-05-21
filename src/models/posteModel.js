@@ -30,6 +30,6 @@ const posteSchema = new mongoose.Schema(
     }
 )
 
-const ModelPoste = mongoose.model("postes",posteSchema);
+const ModelPoste = mongoose.model("postes_",posteSchema);
 export default ModelPoste;
 
