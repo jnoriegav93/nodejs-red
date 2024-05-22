@@ -1,5 +1,5 @@
 import express from 'express';
-import morgan from 'morgan';
+import morgan from 'morgan'; 
 import authRoutes from './routes/authRoutes.js';
 import hiloRoutes from './routes/hiloRoutes.js';
 import mufaRoutes from './routes/mufaRoutes.js';
