@@ -3,7 +3,8 @@ import Poste from '../models/posteModel.js';
 export const listarPostes = async (req, res) =>{
     try{
         // const postes = await Poste.find({ usuario: req.user.id, estado: 1 });
-        const postes = await Poste.find({ estado: 1 });
+        // const postes = await Poste.find({ estado: 1 });
+        const postes = await Poste.find({});
         res.json(postes);
 
     }catch(error){
