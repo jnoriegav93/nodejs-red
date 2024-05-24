@@ -10,7 +10,7 @@ import { crearHiloSchema } from "../schemas/hiloSchema.js";
 
 const router = Router()
 
-// router.get('/hilos', authRequired,listarHilos);
+router.get('/hilos', authRequired,listarHilos);
 router.get('/hilos/:id', authRequired,obtenerHilo);
 router.post('/hilos', authRequired, validateSchema(crearHiloSchema), crearHilo);
 router.delete('/hilos/:id', authRequired,eliminarHilo);
